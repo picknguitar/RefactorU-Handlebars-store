@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+  		<meta charset="utf-8">
+  		<title>Handlebars Store</title>
+  		<link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.min.css">
+  		<link rel="stylesheet" type="text/css" href="main.css">
+	</head>
+	<body>
+
+	<div id="product-container">
+		<h1>Welcome to the Sup-Nin Store!</h1>
+		<div id="products"></div>
+	</div>
+
+	<div id="wishlist-container">
+		<ul id="wishlist">
+
+		</ul>
+	</div>
+
+	<script type="text/x-handlebars-template" id="product-template">
+		<div class="product">
+		<div class="inner-div">
+			<header id="box">
+				<img src="{{image}}">
+				<ul id="clear">			 
+					<li><b>Title:</b><span> {{title}} </span></li>
+					<li><button type="button" class="add-btn">Add To Wishlist</button></li>
+				</ul> 
+			</header>
+				{{#if sale}}
+				<p class="strike"><b>Cost:</b> ${{cost}} </p>
+
+				<p><b>Sale:</b> ${{sale}} </p>
+				{{else}}
+				<p><b>Cost:</b> ${{cost}} </p>
+
+				{{/if}}
+
+				<b>Details:</b> 
+				<ul> 
+					{{#each details}}
+						<li>{{@key}}: {{this}}</li>
+					{{/each}}
+				</ul> 
+		</div>		
+		</div>
+	</script>
+
+	<script type="text/x-handlebars-template" id="wishlist-template">
+		<li>
+			<h3>Added to your wishlist are the following items...</h3>
+			<p>Title: {{title}} </p><button type="button" id="remove-btn">Remove Item</button>
+		</li>
+	</script>
+
+
+  	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  	<script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.2/handlebars.min.js"></script>
+  	<script src="product-data.js"></script>
+  	<script src="main.js"></script>
+
+	</body>
+</html>
